@@ -1,10 +1,15 @@
 import React  from "react";
 import { useState } from "react";
+import "./Input.css";
+
+
 const Input=({valor, setValor, juros, setJuros, parcelas, setParcelas, Calcular})=>{
     
 
     return(
-        <form>
+        <form className="input_form">
+             <h1>Simulador de Emprestimos</h1>
+      
             <input 
                 type="number"
                 placeholder="Valor:"

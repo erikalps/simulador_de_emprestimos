@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./Resultado.css"
 const Resultado =({valor, juros, parcelas})=>{
     
     if(!valor || !juros || !parcelas) return null;
@@ -11,11 +11,11 @@ const Resultado =({valor, juros, parcelas})=>{
     return(
          <>
             <h2>Simulação Realizada</h2>
-            <div>
-                <p>Emprestimo: {Number(valor).toFixed(2)}</p>
-                <p>Juros: {Number(juros).toFixed(2)} %</p>
-                <p>Parcelas: {parcelas}x de R$: {Number(valorParcela).toFixed(2)}</p>
-                <p>Valor total: {Number(valorTotal).toFixed(2)}</p>
+            <div className="resultado">
+                <p className="resultado_p">Emprestimo: {Number(valor).toFixed(2)}</p>
+                <p className="resultado_p">Juros: {Number(juros).toFixed(2)} %</p>
+                <p className="resultado_p">Parcelas: {parcelas}x de R$: {Number(valorParcela).toFixed(2)}</p>
+                <p className="resultado_p">Valor total: {Number(valorTotal).toFixed(2)}</p>
             </div>
 
          </>
