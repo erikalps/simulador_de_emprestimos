@@ -17,7 +17,9 @@ function App() {
     };
 
   return (
-    <div className="app_container">
+    
+    <div>
+      <h1>Simulador de Emprestimos</h1>
       <Input valor ={valor} setValor={setValor} juros ={juros} setJuros={setJuros} parcelas={parcelas} setParcelas={setParcelas} Calcular={Calcular}/>
       {mostrarResultado && <Resultado valor={valor} juros={juros} parcelas={parcelas} />}
     </div>

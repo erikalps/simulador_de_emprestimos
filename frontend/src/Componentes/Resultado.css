@@ -1,4 +1,19 @@
-.resultado{
-    width: 50vw;
-      background-color: rgb(32, 31, 31);
+.resultado {
+  background-color: #e0e0e0;
+  border-radius: 12px;
+  padding: 20px 30px;
+  margin: 50px auto 0 auto; 
+  max-width: 500px;
+  text-align: center;         
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2{
+   color: rgba(177, 50, 0, 0.89);
+}
+.resultado_p {
+  font-size: 16px;
+  color: #333;
+  margin: 10px 0;
+  line-height: 1.4;
 }
