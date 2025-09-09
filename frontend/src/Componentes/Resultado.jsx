@@ -16,7 +16,9 @@ const Resultado =({valor, juros, parcelas, taxaCambio})=>{
      new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: moeda,
-    }).format(num * taxaCambio.conversion_rates[moeda]);
+    }).format(num * taxaCambio.conversion_rates[moeda] )
+    ;
+    console.log(taxaCambio)
     
     return(
         <div className="resultado">

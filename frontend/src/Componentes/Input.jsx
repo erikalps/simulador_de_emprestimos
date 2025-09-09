@@ -1,12 +1,8 @@
 import React  from "react";
-import { useState } from "react";
 import "./Input.css";
 
 
-const Input=({valor, setValor, juros, setJuros, parcelas, setParcelas, Calcular, moeda, setMoeda})=>{
-
-
-
+const Input=({valor, setValor, juros, setJuros, parcelas, setParcelas, Calcular})=>{
 
     return(
         <form className="input_form" onSubmit={(e) => e.preventDefault()}>

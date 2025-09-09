@@ -10,7 +10,10 @@ function App() {
     const [juros, setJuros] = useState("");
     const [parcelas, setParcelas] = useState("");
     const [mostrarResultado, setMostrarResultado] = useState(false);
-    const [taxaCambio, setTaxaCambio] = useState(1); // padrão 1 para real
+    const [taxaCambio, setTaxaCambio] = useState({
+    conversion_rates: { BRL: 1, USD: 0.20, EUR: 0.18 }
+});
+ 
    
    
     const Calcular=()=>{
@@ -19,14 +22,19 @@ function App() {
     };
 
 
-    useEffect(()=>{
-      fetch('https://v6.exchangerate-api.com/v6/d6b301c4fe72097e88154027/latest/BRL') // buscando
-        .then((res)=>res.json()) //transformando o retorno em json
-        .then(
-          (dados)=>{
-          setTaxaCambio(dados);
-        })
+ useEffect(()=>{
+  fetch('https://v6.exchangerate-api.com/v6/8889239bc149de88363489fc/latest/BRL')
+    .then((res)=>res.json())
+    .then((dados)=>{
+    
+    if(dados && dados.conversation_rates){
+       setTaxaCambio(dados);
+    } 
+
+     
     })
+    
+}, []) 
 
   return (
     
