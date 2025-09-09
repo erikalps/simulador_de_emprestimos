@@ -1,25 +1,22 @@
 import React from "react";
 import "./Resultado.css"
-const Resultado =({valor, juros, parcelas, taxaCambio, moeda})=>{
+const Resultado =({valor, juros, parcelas, taxaCambio})=>{
     
     if(!valor || !juros || !parcelas) return null;
     
    // Valor convertido para a moeda selecionada
-    const valorConvertido = Number(valor) * taxaCambio;
+    const valorConvertido = Number(valor);
     // Valor da parcela na moeda selecionada
     const valorParcela = (valorConvertido * (1 + Number(juros) / 100)) / Number(parcelas);
     // Valor total na moeda selecionada
     const valorTotal = valorConvertido * (1 + Number(juros) / 100);
 
-
     // Função para formatar moeda
-    const formatar = (num) =>
+    const formatar = (num, moeda = "BRL") =>
      new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: moeda,
-    }).format(num);
-
-
+    }).format(num * taxaCambio.conversion_rates[moeda]);
     
     return(
         <div className="resultado">
@@ -30,7 +27,9 @@ const Resultado =({valor, juros, parcelas, taxaCambio, moeda})=>{
                 <p className="resultado_p">
                     Parcelas: {parcelas}x de {formatar(valorParcela)}
                 </p>
-                <p className="resultado_p">Valor total: {formatar(valorTotal)}</p>
+                <p className="resultado_p">Valor total: {formatar(valorTotal, "BRL")}</p>
+                <p className="resultado_p">Valor total em dolares: {formatar(valorTotal, "USD")}</p>
+                <p className="resultado_p">Valor total em euros: {formatar(valorTotal, "EUR")}</p>
             </div>
         </div>
     )

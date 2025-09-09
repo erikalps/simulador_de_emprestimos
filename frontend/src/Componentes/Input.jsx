@@ -15,8 +15,6 @@ const Input=({valor, setValor, juros, setJuros, parcelas, setParcelas, Calcular,
                 placeholder="Valor:"
                 value={valor}
                 onChange={(e)=>setValor(e.target.value)}
-
-
             />
             <input 
                 type="number"
@@ -31,12 +29,6 @@ const Input=({valor, setValor, juros, setJuros, parcelas, setParcelas, Calcular,
                 onChange={(e)=>setParcelas(e.target.value)}
                 
              />
-
-             <select value={moeda} onChange={(e)=>setMoeda(e.target.value)}>
-                 <option value="BRL">Real (BRL)</option>
-                 <option value="USD">Dólar (USD)</option>
-                 <option value="EUR">Euro (EUR)</option>
-             </select>
              <button type="button" onClick={Calcular}>Calcular</button>
 
         </form>
