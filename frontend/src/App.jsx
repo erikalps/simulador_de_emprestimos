@@ -1,6 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
-import { useEffect } from 'react';
 
 import Input from './Componentes/Input'
 import Resultado from './Componentes/Resultado';
@@ -10,35 +9,30 @@ function App() {
   const [juros, setJuros] = useState("");
   const [parcelas, setParcelas] = useState("");
   const [mostrarResultado, setMostrarResultado] = useState(false);
+  const [activeTab, setActiveTab] = useState("simular");   // ← estava faltando
+  const [sistema, setSistema] = useState("PRICE");          // ← estava faltando
   const [taxaCambio, setTaxaCambio] = useState({
     conversion_rates: { BRL: 1, USD: 0.19, EUR: 0.18 }
   });
-
-
 
   const Calcular = () => {
     setMostrarResultado(true);
     setActiveTab("resultado");
   };
 
-
   useEffect(() => {
-
     fetch('https://v6.exchangerate-api.com/v6/c140735a3efc6c7eb2fb7734/latest/USD')
       .then((res) => res.json())
       .then((dados) => {
-        if (dados && dados.conversation_rates) {
+        if (dados && dados.conversion_rates) {  // ← bug corrigido
           setTaxaCambio(dados);
         }
-
-
       })
-
+      .catch(() => {});  // ← proteção se a API cair
   }, [])
 
   return (
     <div className="app-wrapper">
-      {/* Header */}
       <header className="app-header">
         <div className="header-badge">
           <span className="header-badge-dot"></span>
@@ -48,9 +42,7 @@ function App() {
         <p className="header-sub">Calcule parcelas, juros e compare sistemas de amortização</p>
       </header>
 
-      {/* Main Card */}
       <div className="main-card">
-        {/* Tab Bar */}
         <div className="tab-bar">
           <button
             className={`tab-btn ${activeTab === "simular" ? "active" : ""}`}
@@ -146,4 +138,5 @@ function App() {
     </div>
   )
 }
+
 export default App;
